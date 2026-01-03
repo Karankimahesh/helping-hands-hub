@@ -1,12 +1,27 @@
-import { motion } from "framer-motion";
 import { Heart, Mail, Phone, MapPin, Facebook, Twitter, Instagram, Linkedin } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { Link } from "react-router-dom";
 
 const Footer = () => {
   const footerLinks = {
-    Platform: ["How It Works", "Donation Drives", "Success Stories", "FAQ"],
-    Community: ["For Donors", "For Recipients", "For Volunteers", "Partners"],
-    Resources: ["Help Center", "Safety Guidelines", "Privacy Policy", "Terms of Service"],
+    Platform: [
+      { name: "How It Works", href: "#how-it-works" },
+      { name: "Donation Drives", href: "/drives" },
+      { name: "Success Stories", href: "/about" },
+      { name: "FAQ", href: "/contact" },
+    ],
+    Community: [
+      { name: "For Donors", href: "/donate" },
+      { name: "For Recipients", href: "/request-help" },
+      { name: "For Volunteers", href: "/sign-up" },
+      { name: "Partners", href: "/contact" },
+    ],
+    Resources: [
+      { name: "Help Center", href: "/contact" },
+      { name: "Safety Guidelines", href: "/about" },
+      { name: "Privacy Policy", href: "/about" },
+      { name: "Terms of Service", href: "/about" },
+    ],
   };
 
   const socialLinks = [
@@ -22,12 +37,12 @@ const Footer = () => {
         <div className="grid md:grid-cols-2 lg:grid-cols-5 gap-12 mb-12">
           {/* Brand */}
           <div className="lg:col-span-2">
-            <div className="flex items-center gap-2 mb-4">
+            <Link to="/" className="flex items-center gap-2 mb-4">
               <div className="w-10 h-10 bg-gradient-hero rounded-xl flex items-center justify-center">
                 <Heart className="w-5 h-5 text-primary-foreground" />
               </div>
               <span className="font-display text-xl font-bold">GiveHope</span>
-            </div>
+            </Link>
             <p className="text-background/70 mb-6 max-w-sm">
               Connecting hearts, changing lives. Join our community of givers and make a real difference in the world.
             </p>
@@ -50,10 +65,16 @@ const Footer = () => {
               <h4 className="font-semibold mb-4">{title}</h4>
               <ul className="space-y-3">
                 {links.map((link) => (
-                  <li key={link}>
-                    <a href="#" className="text-background/70 hover:text-background transition-colors">
-                      {link}
-                    </a>
+                  <li key={link.name}>
+                    {link.href.startsWith("#") ? (
+                      <a href={link.href} className="text-background/70 hover:text-background transition-colors">
+                        {link.name}
+                      </a>
+                    ) : (
+                      <Link to={link.href} className="text-background/70 hover:text-background transition-colors">
+                        {link.name}
+                      </Link>
+                    )}
                   </li>
                 ))}
               </ul>

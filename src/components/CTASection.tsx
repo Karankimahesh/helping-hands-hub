@@ -1,6 +1,7 @@
 import { motion } from "framer-motion";
 import { ArrowRight, Heart, AlertTriangle } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { Link } from "react-router-dom";
 
 const CTASection = () => {
   return (
@@ -54,21 +55,25 @@ const CTASection = () => {
             transition={{ duration: 0.6, delay: 0.3 }}
             className="flex flex-col sm:flex-row gap-4 justify-center"
           >
-            <Button 
-              size="xl" 
-              className="bg-primary-foreground text-primary hover:bg-primary-foreground/90 font-semibold shadow-medium"
-            >
-              <Heart className="w-5 h-5" />
-              Donate Now
-            </Button>
-            <Button 
-              size="xl" 
-              variant="outline"
-              className="border-2 border-primary-foreground text-primary-foreground hover:bg-primary-foreground/10 font-semibold"
-            >
-              Organize a Drive
-              <ArrowRight className="w-5 h-5" />
-            </Button>
+            <Link to="/donate">
+              <Button 
+                size="xl" 
+                className="bg-primary-foreground text-primary hover:bg-primary-foreground/90 font-semibold shadow-medium"
+              >
+                <Heart className="w-5 h-5" />
+                Donate Now
+              </Button>
+            </Link>
+            <Link to="/organize-drive">
+              <Button 
+                size="xl" 
+                variant="outline"
+                className="border-2 border-primary-foreground text-primary-foreground hover:bg-primary-foreground/10 font-semibold"
+              >
+                Organize a Drive
+                <ArrowRight className="w-5 h-5" />
+              </Button>
+            </Link>
           </motion.div>
         </div>
       </div>

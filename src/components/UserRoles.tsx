@@ -1,6 +1,7 @@
 import { motion } from "framer-motion";
 import { Users, ShieldCheck, Truck, Heart } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { Link } from "react-router-dom";
 
 const roles = [
   {
@@ -10,6 +11,7 @@ const roles = [
     features: ["Manage users & drives", "Approve donations", "Generate reports"],
     color: "border-primary/30 hover:border-primary",
     iconBg: "bg-primary/10 text-primary",
+    link: "/admin-dashboard",
   },
   {
     icon: Heart,
@@ -18,6 +20,7 @@ const roles = [
     features: ["List donations", "Track delivery", "Join drives"],
     color: "border-secondary/30 hover:border-secondary",
     iconBg: "bg-secondary/10 text-secondary",
+    link: "/donor-dashboard",
   },
   {
     icon: Users,
@@ -26,6 +29,7 @@ const roles = [
     features: ["Request items", "Track status", "Rate donations"],
     color: "border-accent/30 hover:border-accent",
     iconBg: "bg-accent/10 text-accent",
+    link: "/recipient-dashboard",
   },
   {
     icon: Truck,
@@ -34,6 +38,7 @@ const roles = [
     features: ["Plan routes", "Manage inventory", "Update status"],
     color: "border-primary/30 hover:border-primary",
     iconBg: "bg-primary/10 text-primary",
+    link: "/logistics-dashboard",
   },
 ];
 
@@ -84,9 +89,11 @@ const UserRoles = () => {
                       </li>
                     ))}
                   </ul>
-                  <Button variant="outline" size="sm">
-                    Learn More
-                  </Button>
+                  <Link to={role.link}>
+                    <Button variant="outline" size="sm">
+                      View Dashboard
+                    </Button>
+                  </Link>
                 </div>
               </div>
             </motion.div>

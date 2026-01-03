@@ -1,6 +1,7 @@
 import { motion } from "framer-motion";
 import { Heart, Users, Truck, Shield } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { Link } from "react-router-dom";
 
 const HeroSection = () => {
   return (
@@ -50,13 +51,17 @@ const HeroSection = () => {
             transition={{ duration: 0.8, delay: 0.3 }}
             className="flex flex-col sm:flex-row gap-4 justify-center mb-16"
           >
-            <Button variant="hero" size="xl">
-              <Heart className="w-5 h-5" />
-              Start Donating
-            </Button>
-            <Button variant="hero-outline" size="xl">
-              Request Help
-            </Button>
+            <Link to="/donate">
+              <Button variant="hero" size="xl">
+                <Heart className="w-5 h-5" />
+                Start Donating
+              </Button>
+            </Link>
+            <Link to="/request-help">
+              <Button variant="hero-outline" size="xl">
+                Request Help
+              </Button>
+            </Link>
           </motion.div>
 
           {/* Stats */}
