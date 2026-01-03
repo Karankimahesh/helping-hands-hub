@@ -2,6 +2,7 @@ import { motion } from "framer-motion";
 import { Calendar, MapPin, Users, ArrowRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
+import { Link } from "react-router-dom";
 
 const drives = [
   {
@@ -108,10 +109,12 @@ const DonationDrives = () => {
                   </div>
                 </div>
 
-                <Button variant="default" className="w-full group/btn">
-                  Join Drive
-                  <ArrowRight className="w-4 h-4 transition-transform group-hover/btn:translate-x-1" />
-                </Button>
+                <Link to={`/drives/${drive.id}`}>
+                  <Button variant="default" className="w-full group/btn">
+                    Join Drive
+                    <ArrowRight className="w-4 h-4 transition-transform group-hover/btn:translate-x-1" />
+                  </Button>
+                </Link>
               </div>
             </motion.div>
           ))}
@@ -123,10 +126,12 @@ const DonationDrives = () => {
           viewport={{ once: true }}
           className="text-center"
         >
-          <Button variant="outline" size="lg">
-            View All Drives
-            <ArrowRight className="w-4 h-4" />
-          </Button>
+          <Link to="/drives">
+            <Button variant="outline" size="lg">
+              View All Drives
+              <ArrowRight className="w-4 h-4" />
+            </Button>
+          </Link>
         </motion.div>
       </div>
     </section>
